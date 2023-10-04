@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-12">
+            <div class="card my-5">
+                <div class="card-header text-center">Patients List</div>
+                <div class="card-body">
+                    <form [formGroup]="patientForm" (ngSubmit)="handleAddPatient(patientForm);toggle()">
+                        <div class="d-flex">
+                            <input type="text" class="form-control" placeholder="Patient Aadhar Number"
+                                formControlName="patientAadhar">
+                            <button class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" (click)="handleAddDataInLocalStorage()">Verify</button>
+                        </div>
+                        <div class="mt-3" *ngIf="isShow">
+                            <input type="text" class="form-control" placeholder="Patient Name"
+                                formControlName="patientName">
+                        </div>
+                        <div class="mt-3" *ngIf="isShow">
+                            <input type="email" class="form-control" placeholder="Patient Email"
+                                formControlName="patientEmail">
+                        </div>
+                        <div class="mt-3" *ngIf="isShow">
+                            <input type="numnber" class="form-control" placeholder="Patient Mobile Number"
+                                formControlName="patientNumber">
+                        </div>
+                        <div class="mt-3 text-center">
+                            <button class="btn btn-success" type="submit" *ngIf="isShow">Add Patient</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <table class="table table-bordered my-5">
+                <thead class="table-danger">
+                    <tr>
+                        <!-- <th scope="col">S.No.</th> -->
+                        <th scope="col">Aadhar Number</th>
+                        <th scope="col">Name</th>
+                        <!-- <th scope="col">Mobile Number</th> -->
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of mainPatientsDataList; let i = index">
+                        <!-- <th>{{i + 1}}</th> -->
+                        <td>{{item.patientAadhar}}</td>
+                        <td>{{item.patientName}}</td>
+                        <!-- <td>{{item.patientNumber}}</td> -->
+                        <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="handleDeletePatientData(i)">Unlink</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Please Enter OTP</h1>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <div class="d-flex">
+                    <div class="border border-dark text-center px-2">{{num1}}</div>
+                    <div class="border border-dark mx-2 text-center px-2">{{num2}}</div>
+                    <div class="border border-dark text-center px-2">{{num3}}</div>
+                    <div class="border border-dark ms-2 text-center px-2">{{num4}}</div>
+                </div>
+            </div>
+            <div class="modal-footer text-start">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="toggle()" >Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure❓</h1>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-footer text-start">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="handleConfirmDeletePatientData()" >Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

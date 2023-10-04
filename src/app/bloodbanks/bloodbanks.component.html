@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="my-5">
+                <h3 class="text-danger fw-bold">Blood Stock Availability</h3>
+            </div>
+            <div class="card">
+                <div class="card-header bg-danger">Search Blood Stock</div>
+                <div class="card-body">
+                    <form [formGroup]="bloodForm" (ngSubmit)="handleBloodBankDetails(bloodForm)">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-12">
+                                <select class="form-select"  formControlName="state">
+                                    <option selected >Select State</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-12">
+                                <select class="form-select" formControlName="district">
+                                    <option selected>Select District</option>
+                                    <option value="Akola">Akola</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Pune">Pune</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-12">
+                                <select class="form-select" formControlName="bloodgroups">
+                                    <option selected>All Blood Groups</option>
+                                    <option value="A +ve">A +ve</option>
+                                    <option value="A -ve">A -ve</option>
+                                    <option value="B +ve">B +ve</option>
+                                    <option value="B -ve">B -ve</option>
+                                    <option value="AB +ve">AB +ve</option>
+                                    <option value="AB -ve">AB -ve</option>
+                                    <option value="O +ve">O +ve</option>
+                                    <option value="O -ve">O -ve</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-12">
+                                <select class="form-select" formControlName="bloodComponent">
+                                    <option selected>Select Blood Component</option>
+                                    <option value="Single donar platelet">Single Donar Platelet</option>
+                                    <option value="Plasma">Plasma</option>
+                                    <option value="Whool blood">Whool blood</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                      Near me
+                                    </label>
+                                  </div>
+                            </div>
+                            <div class="col-12 mt-3 text-center">
+                                <button class="btn btn-danger" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex mt-5">
+            <div class="d-flex">
+                <div class="bg-danger" style="height: 20px; width: 20px"></div>
+                <div class="ms-2">Government Blood Banks</div>
+            </div>
+            <div class="d-flex ms-3">
+                <div class="border border-secondary" style="height: 20px; width: 20px"></div>
+                <div class="ms-2">Other Blood Banks</div>
+            </div>
+        </div>
+        <div class="col-12">
+            <table class="table table-bordered my-5">
+                <thead class="table-danger text-center">
+                    <tr>
+                        <th scope="col">S.No.</th>
+                        <th scope="col">Blood Bank</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Availability</th>
+                        <th scope="col">Last Updated</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of allBloodBankData; let i = index">
+                        <th [ngClass]="{'bg-danger': item[2]=='Govt.'}">{{i + 1 }}</th>
+                        <td [ngClass]="{'bg-danger': item[2]=='Govt.'}" [innerHTML]=item[1]></td>
+                        <td [ngClass]="{'bg-danger': item[2]=='Govt.'}">{{item[2]}}</td>
+                        <td [ngClass]="{'bg-danger': item[2]=='Govt.'}" [innerHTML]=item[3]></td>
+                        <td [ngClass]="{'bg-danger': item[2]=='Govt.'}">{{item[4]}}</td>
+                        <td [ngClass]="{'bg-danger': item[2]=='Govt.'}">{{item[5]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

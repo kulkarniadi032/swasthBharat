@@ -1,0 +1,154 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-12 offset-md-2">
+            <div class="card my-5">
+                <div class="card-header text-center">Service Registration</div>
+                <div class="card-body">
+                    <form [formGroup]="serviceForm" (ngSubmit)="handleServiceRegistration(serviceForm)">
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <input type="text" class="form-control" placeholder="Enter name" formControlName="name"
+                                    [ngClass]="{
+                                    'is-invalid': !serviceForm.get('name')?.valid && serviceForm.get('name')?.touched,
+                                    'is-valid': serviceForm.get('name')?.valid && serviceForm.get('name')?.touched}">
+                                <span class="invalid-feedback">Please enter your name</span>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <input type="email" class="form-control" placeholder="Enter email address"
+                                    formControlName="email" [ngClass]="{
+                                    'is-invalid': !serviceForm.get('email')?.valid && serviceForm.get('email')?.touched,
+                                    'is-valid': serviceForm.get('email')?.valid && serviceForm.get('email')?.touched}">
+                                <span class="invalid-feedback">Please enter your email</span>
+                            </div>
+                            <div class="mt-3 col-md-6 col-12">
+                                <input type="text" class="form-control" placeholder="Enter address"
+                                    formControlName="address"
+                                    [ngClass]="{
+                                    'is-invalid': !serviceForm.get('address')?.valid && serviceForm.get('address')?.touched,
+                                    'is-valid': serviceForm.get('address')?.valid && serviceForm.get('address')?.touched}">
+                                <span class="invalid-feedback">Please enter your address</span>
+                            </div>
+                            <div class="mt-3 col-md-6 col-12">
+                                <input type="number" class="form-control" placeholder="Enter aadhar number"
+                                    pattern="[1-9]{12}" formControlName="aadharCard"
+                                    [ngClass]="{
+                                    'is-invalid': !serviceForm.get('aadharCard')?.valid && serviceForm.get('aadharCard')?.touched,
+                                    'is-valid': serviceForm.get('aadharCard')?.valid && serviceForm.get('aadharCard')?.touched}">
+                                <span class="invalid-feedback">Please enter your aadhar number</span>
+                            </div>
+                            <div class="mt-3 col-md-6 col-12">
+                                <input type="number" class="form-control" placeholder="Enter Mobile Number"
+                                    pattern="[1-9]{10}" formControlName="mobile"
+                                    [ngClass]="{
+                                    'is-invalid': !serviceForm.get('mobile')?.valid && serviceForm.get('mobile')?.touched,
+                                    'is-valid': serviceForm.get('mobile')?.valid && serviceForm.get('mobile')?.touched}">
+                                <span class="invalid-feedback">Please enter your mobile number</span>
+                            </div>
+                            <div class="mt-3 col-md-6 col-12">
+                                <input type="date" class="form-control" placeholder="Enter Date of Birth"
+                                    formControlName="dob" [ngClass]="{
+                                    'is-invalid': !serviceForm.get('dob')?.valid && serviceForm.get('dob')?.touched,
+                                    'is-valid': serviceForm.get('dob')?.valid && serviceForm.get('dob')?.touched}">
+                                <span class="invalid-feedback">Please enter your address</span>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <select class="form-select mt-3" formControlName="bloodGroup">
+                                    <option selected>Select Your Blood Group</option>
+                                    <option value="A +ve">A +ve</option>
+                                    <option value="A -ve">A -ve</option>
+                                    <option value="B +ve">B +ve</option>
+                                    <option value="B -ve">B -ve</option>
+                                    <option value="AB +ve">AB +ve</option>
+                                    <option value="AB -ve">AB -ve</option>
+                                    <option value="O +ve">O +ve</option>
+                                    <option value="O -ve">O -ve</option>
+                                </select>
+                                <span class="invalid-feedback">Please select your blood group</span>
+                            </div>
+                            <div class="mt-3 col-md-6 col-12">
+                                <input type="number" class="form-control" placeholder="Enter Year Of experience"
+                                    formControlName="experience"
+                                    [ngClass]="{
+                                    'is-invalid': !serviceForm.get('experience')?.valid && serviceForm.get('experience')?.touched,
+                                    'is-valid': serviceForm.get('experience')?.valid && serviceForm.get('experience')?.touched}">
+                                <span class="invalid-feedback">Please enter year of experience</span>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <select class="form-select mt-3" formControlName="designation">
+                                    <option selected>Select Your Designation</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="hospitalAdmin">Hospital Admin</option>
+                                    <option value="gymTrainer">Gym Trainer</option>
+                                    <option value="physiotherapist">Physiotherapist</option>
+                                    <option value="dietitian">Dietitian</option>
+                                    <option value="yogaTeacher">Yoga Teacher</option>
+                                    <option value="insuranceAgency">Insurance Agency</option>
+                                    <option value="bloodBank">Blood Bank</option>
+                                    <option value="cardiologist">Cardiologist</option>
+                                </select>
+                                <span class="invalid-feedback">Please select your blood group</span>
+                            </div>
+                            <div class="mt-3 col-md-6 col-12">
+                                <div for="">Select your gender :</div>
+                                <div class="d-flex mt-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender"
+                                            formControlName="gender" value="male" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check mx-3">
+                                        <input class="form-check-input" type="radio" name="gender"
+                                            formControlName="gender" value="Female" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Female
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender"
+                                            formControlName="gender" value="others" id="flexRadioDefault3">
+                                        <label class="form-check-label" for="flexRadioDefault3">
+                                            Others
+                                        </label>
+                                    </div>
+                                </div>
+                                <span class="invalid-feedback">Please select your gender</span>
+                            </div>
+                            <div class="mt-3 col-12">
+                                <button class="btn btn-primary">Add Hospital Details</button>
+                                <div class="d-flex">
+                                    <div class="mt-3">
+                                        <input type="text" class="form-control" placeholder="Enter Hospital Details">
+                                    </div>
+                                    <div class="mt-3 mx-2">
+                                        <input type="text" class="form-control" placeholder="Enter City">
+                                    </div>
+                                    <div class="mt-3">
+                                        <input type="number" class="form-control" placeholder="Enter Pincode">
+                                    </div>
+                                    <div class="mt-3 ms-2">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <button class="btn btn-success" type="submit" [disabled]="
+                                serviceForm.get('name')?.value == '' || 
+                                serviceForm.get('email')?.value == '' ||
+                                serviceForm.get('address')?.value == '' ||
+                                serviceForm.get('aadharCard')?.value == '' ||
+                                serviceForm.get('dob')?.value == '' ||
+                                serviceForm.get('mobile')?.value == '' ||
+                                serviceForm.get('gender')?.value == '' ||
+                                serviceForm.get('bloodGroup')?.value == '' ||
+                                serviceForm.get('haveWatch')?.value == ''
+                                ">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,170 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-12 offset-md-3">
+            <div class="card my-5">
+                <div class="card-header text-center">User Registration</div>
+                <div class="card-body">
+                    <form [formGroup]="userForm" (ngSubmit)="handleUserRegistration(userForm)">
+                        <div>
+                            <input type="text" class="form-control" placeholder="Enter name" formControlName="name"
+                                [ngClass]="{
+                                'is-invalid': !userForm.get('name')?.valid && userForm.get('name')?.touched,
+                                'is-valid': userForm.get('name')?.valid && userForm.get('name')?.touched}">
+                            <span class="invalid-feedback">Please enter your name</span>
+                        </div>
+                        <div class="mt-3">
+                            <input type="email" class="form-control" placeholder="Enter email address"
+                                formControlName="email" [ngClass]="{
+                                'is-invalid': !userForm.get('email')?.valid && userForm.get('email')?.touched,
+                                'is-valid': userForm.get('email')?.valid && userForm.get('email')?.touched}">
+                            <span class="invalid-feedback">Please enter your email</span>
+                        </div>
+                        <div class="mt-3">
+                            <input type="text" class="form-control" placeholder="Enter address"
+                                formControlName="address" [ngClass]="{
+                                'is-invalid': !userForm.get('address')?.valid && userForm.get('address')?.touched,
+                                'is-valid': userForm.get('address')?.valid && userForm.get('address')?.touched}">
+                            <span class="invalid-feedback">Please enter your address</span>
+                        </div>
+                        <div class="mt-3">
+                            <input type="number" class="form-control" placeholder="Enter aadhar number"
+                                pattern="[1-9]{12}" formControlName="aadharCard" [ngClass]="{
+                                'is-invalid': !userForm.get('aadharCard')?.valid && userForm.get('aadharCard')?.touched,
+                                'is-valid': userForm.get('aadharCard')?.valid && userForm.get('aadharCard')?.touched}">
+                            <span class="invalid-feedback">Please enter your aadhar number</span>
+                        </div>
+                        <div class="mt-3">
+                            <input type="number" class="form-control" placeholder="Enter Mobile Number"
+                                pattern="[1-9]{10}" formControlName="mobile" [ngClass]="{
+                                'is-invalid': !userForm.get('mobile')?.valid && userForm.get('mobile')?.touched,
+                                'is-valid': userForm.get('mobile')?.valid && userForm.get('mobile')?.touched}">
+                            <span class="invalid-feedback">Please enter your mobile number</span>
+                        </div>
+                        <div class="mt-3">
+                            <input type="date" class="form-control" placeholder="Enter Date of Birth"
+                                formControlName="dob" [ngClass]="{
+                                'is-invalid': !userForm.get('dob')?.valid && userForm.get('dob')?.touched,
+                                'is-valid': userForm.get('dob')?.valid && userForm.get('dob')?.touched}">
+                            <span class="invalid-feedback">Please enter your address</span>
+                        </div>
+                        <div>
+                            <select class="form-select mt-3" formControlName="bloodGroup">
+                                <option selected>Select Your Blood Group</option>
+                                <option value="A +ve">A +ve</option>
+                                <option value="A -ve">A -ve</option>
+                                <option value="B +ve">B +ve</option>
+                                <option value="B -ve">B -ve</option>
+                                <option value="AB +ve">AB +ve</option>
+                                <option value="AB -ve">AB -ve</option>
+                                <option value="O +ve">O +ve</option>
+                                <option value="O -ve">O -ve</option>
+                            </select>
+                            <span class="invalid-feedback">Please select your blood group</span>
+                        </div>
+                        <div class="mt-3">
+                            <div for="">Select your gender :</div>
+                            <div class="d-flex mt-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" formControlName="gender"
+                                        value="male" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="radio" name="gender" formControlName="gender"
+                                        value="Female" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Female
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" formControlName="gender"
+                                        value="others" id="flexRadioDefault3">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                        Others
+                                    </label>
+                                </div>
+                            </div>
+                            <span class="invalid-feedback">Please select your gender</span>
+                        </div>
+                        <div class="mt-3">
+                            <div for="">Do you have smart watch :</div>
+                            <div class="d-flex mt-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="haveWatch"
+                                        formControlName="haveWatch" value="Yes" id="flexRadioDefault1"
+                                        (click)="showWatchDiv()">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="radio" name="haveWatch"
+                                        formControlName="haveWatch" value="No" id="flexRadioDefault2" checked (click)="showWatchDiv()">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                            <span class="invalid-feedback">Please select your choice</span>
+                        </div>
+                        <div class="mt-3" *ngIf="isWatchShow">
+                            <div class="d-flex flex-wrap">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Fit Bit
+                                    </label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Apple
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Google
+                                    </label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Samsung
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Amazfid
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Others
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-success" type="submit" [disabled]="
+                            userForm.get('name')?.value == '' || 
+                            userForm.get('email')?.value == '' ||
+                            userForm.get('address')?.value == '' ||
+                            userForm.get('aadharCard')?.value == '' ||
+                            userForm.get('dob')?.value == '' ||
+                            userForm.get('mobile')?.value == '' ||
+                            userForm.get('gender')?.value == '' ||
+                            userForm.get('bloodGroup')?.value == '' ||
+                            userForm.get('haveWatch')?.value == ''
+                            ">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

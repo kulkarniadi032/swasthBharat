@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#"><span class="text-success fw-bold fs-3">स्वस्थ</span><span
+                class="fw-bold fs-4" style="color: rgb(255, 111, 0)">Bharat</span></a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="" routerLinkActive="" aria-current="page">Home <span
+                            class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/reminders']">Reminders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="" [routerLink]="['/bloodbanks']">Blood Banks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/hospitallist']">Hospitals List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/patientslist']">Patients List</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">My profile</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" [routerLink]="['/appoinments']">My Appoinments</a>
+                        <a class="dropdown-item" [routerLink]="['/family']">Family History</a>
+                        <a class="dropdown-item" [routerLink]="['/insurance']">Insurance History</a>
+                        <a class="dropdown-item" [routerLink]="['/interest']">My Intrest</a>
+                    </div>
+                </li>
+                
+            </ul>
+            <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Registration
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" [routerLink]="['/userregistration']">User Registration</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/serviceregistration']">Service Registration</a></li>
+                </ul>
+            </div>
+            <!-- <div>
+                <button class="btn btn-secondary">
+                    Login
+                </button>
+            </div> -->
+        </div>
+    </div>
+</nav>

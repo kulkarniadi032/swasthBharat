@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-12">
+            <div class="card my-5">
+                <div class="card-header text-center">
+                    Enter City Name
+                </div>
+                <div class="card-body">
+                    <div>
+                        <input type="text" class="form-control" placeholder="Enter City Name" #city>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                ICU Beds
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Normal Beds
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Near me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-success" (click)="handleGetCityValue(city.value)">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <table class="table table-bordered my-5">
+                <thead class="table-danger">
+                    <tr>
+                        <th scope="col">S.No.</th>
+                        <th scope="col" style="width: 30%">Hospital Name</th>
+                        <th scope="col" style="width: 35%">Address</th>
+                        <th scope="col">Pincode</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of hospitalList; let i = index">
+                        <th>{{i + 1}}</th>
+                        <td>{{item.tags.name}}</td>
+                        <td>{{item.tags['addr:full']}}</td>
+                        <td>{{item.tags['addr:postcode']}}</td>
+                        <td>
+                            <div class="alert alert-success py-1 px-2 text-center">Available</div>
+                            <div class="">
+                                <div class="fw-bold">ICU Beds : 2</div>
+                                <div class="fw-bold">Beds : 5</div>
+                            </div>
+                            <div class="btn btn-success mt-2 text-center">Pay & Book</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
